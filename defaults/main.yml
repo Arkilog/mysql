@@ -1,0 +1,11 @@
+---
+# defaults file for mysql
+arkilog_mysql_version: '5.5'
+arkilog_mysql_user: 'user'
+arkilog_mysql_pwd: 's333cret'
+arkilog_mysql_login_user: 'root'
+arkilog_mysql_login_pwd: ''
+arkilog_mysql_privil: '*.*:ALL'
+arkilog_mysql_database_list:
+  - '{{ arkilog_mysql_user }}dev'
+  - '{{ arkilog_mysql_user }}test'

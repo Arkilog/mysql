@@ -1,0 +1,25 @@
+---
+- name: Ensure MySQL is installed
+  sudo: yes
+  apt: name={{ item }} state=latest 
+  with_items:
+  - python-mysqldb
+  - mysql-server-{{ arkilog_mysql_version }}
+  - mysql-client-{{ arkilog_mysql_version }}
+  when: ansible_os_family == 'Debian'
+- name: Ensure mysql user is created
+  mysql_user: >
+    name={{ arkilog_mysql_user }} 
+    host={{ item }} 
+    password={{ arkilog_mysql_pwd }} 
+    login_user={{ arkilog_mysql_login_user }}
+    login_password={{ arkilog_mysql_login_pwd }}
+    priv='{{ arkilog_mysql_privil }},GRANT' 
+  with_items:
+  - "{{ inventory_hostname }}"
+  - 127.0.0.1
+  - ::1
+  - localhost
+- name: Ensure mysql databases are created
+  mysql_db: name={{ item }} state=present
+  with_items: $arkilog_mysql_database_list
