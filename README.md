@@ -1,7 +1,9 @@
-Role Name
+[![Build Status](https://travis-ci.org/Arkilog/mysql.svg)](https://travis-ci.org/Arkilog/mysql)
+
+Arkilog Ansible provisionner for MySQL 
 ========
 
-A brief description of the role goes here.
+Arkilog Ansible provisionner for MySQL.
 
 Requirements
 ------------
